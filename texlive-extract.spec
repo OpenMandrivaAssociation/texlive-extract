@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /macros/latex/contrib/extract
+# catalog-date 2006-11-09 15:16:55 +0100
+# catalog-license lppl
+# catalog-version 1.8
 Name:		texlive-extract
 Version:	1.8
 Release:	1
@@ -53,6 +59,7 @@ presentation and use them in a new file.
 %doc %{_texmfdistdir}/doc/latex/extract/extract.pdf
 #- source
 %doc %{_texmfdistdir}/source/latex/extract/extract.dtx
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -63,3 +70,5 @@ presentation and use them in a new file.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
