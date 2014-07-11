@@ -6,7 +6,7 @@
 # catalog-version 1.8
 Name:		texlive-extract
 Version:	1.8
-Release:	7
+Release:	8
 Summary:	Extract parts of a document and write to another document
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/extract
