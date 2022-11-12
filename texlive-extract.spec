@@ -1,19 +1,13 @@
-# revision 15878
-# category Package
-# catalog-ctan /macros/latex/contrib/extract
-# catalog-date 2006-11-09 15:16:55 +0100
-# catalog-license lppl
-# catalog-version 1.8
 Name:		texlive-extract
-Version:	1.8
-Release:	11
+Version:	52117
+Release:	1
 Summary:	Extract parts of a document and write to another document
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/extract
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -36,41 +30,27 @@ not. This might be useful for extracting specific slides from a
 presentation and use them in a new file.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
-%{_texmfdistdir}/tex/latex/extract/extract.sty
-%doc %{_texmfdistdir}/doc/latex/extract/README
-%doc %{_texmfdistdir}/doc/latex/extract/extract.pdf
+%{_texmfdistdir}/tex/latex/extract
+%doc %{_texmfdistdir}/doc/latex/extract
 #- source
-%doc %{_texmfdistdir}/source/latex/extract/extract.dtx
+%doc %{_texmfdistdir}/source/latex/extract
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 1.8-2
-+ Revision: 751749
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 1.8-1
-+ Revision: 718406
-- texlive-extract
-- texlive-extract
-- texlive-extract
-- texlive-extract
-
