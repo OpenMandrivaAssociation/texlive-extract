@@ -1,6 +1,6 @@
 Name:		texlive-extract
 Version:	52117
-Release:	1
+Release:	2
 Summary:	Extract parts of a document and write to another document
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/extract
