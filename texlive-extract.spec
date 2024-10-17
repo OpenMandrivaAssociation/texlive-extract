@@ -3,7 +3,7 @@ Version:	52117
 Release:	2
 Summary:	Extract parts of a document and write to another document
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/extract
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/extract
 License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.doc.r%{version}.tar.xz
