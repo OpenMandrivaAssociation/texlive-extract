@@ -1,56 +1,34 @@
-Name:		texlive-extract
-Version:	52117
-Release:	2
+%global tl_name extract
+%global tl_revision 52117
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.9a
+Release:	%{tl_revision}.1
 Summary:	Extract parts of a document and write to another document
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/extract
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.source.r%{version}.tar.xz
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/extract.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The package provides the means to extract specific content from
-a source document and write that to a target document. One
-could, for instance, use this to extract all exercises from
-lecture notes and generate an exercises book on the fly. The
-package also provides an environment which writes its body
-entirely to the target file. Another environment will write to
-the target file, but will also execute the body. This allows to
-share code (for instance, a preamble) between the source
-document and the target file. Finally, the package provides an
-interface to conditionally extract content. With a single
-package option, one can specify exactly which commands (counted
-from the start of the document) should be extracted and which
-not. This might be useful for extracting specific slides from a
-presentation and use them in a new file.
+The package provides the means to extract specific content from a source
+document and write that to a target document. One could, for instance,
+use this to extract all exercises from lecture notes and generate an
+exercises book on the fly. The package also provides an environment
+which writes its body entirely to the target file. Another environment
+will write to the target file, but will also execute the body. This
+allows to share code (for instance, a preamble) between the source
+document and the target file. Finally, the package provides an interface
+to conditionally extract content. With a single package option, one can
+specify exactly which commands (counted from the start of the document)
+should be extracted and which not. This might be useful for extracting
+specific slides from a presentation and use them in a new file.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/extract
-%doc %{_texmfdistdir}/doc/latex/extract
-#- source
-%doc %{_texmfdistdir}/source/latex/extract
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
